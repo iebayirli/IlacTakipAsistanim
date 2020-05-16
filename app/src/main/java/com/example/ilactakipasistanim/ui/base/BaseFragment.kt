@@ -12,7 +12,7 @@ abstract class BaseFragment<T: BasePresenter<*>>: Fragment(), BaseView {
 
     abstract  val layoutId: Int
     protected abstract val presenter: T
-    private var baseActivity: BaseActivity<*>? = null
+    protected var baseActivity: BaseActivity<*>? = null
 
     abstract fun initializeUI()
     

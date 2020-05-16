@@ -5,11 +5,16 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import androidx.fragment.app.FragmentManager
+import com.example.ilactakipasistanim.common.SharedPrefHelper
 
 abstract class BaseActivity<T : BasePresenter<*>>: AppCompatActivity(), BaseView {
 
     protected abstract val presenter: T
     protected abstract val layoutId: Int
+
+    val sharedPrefHelper by lazy {
+        SharedPrefHelper(this)
+    }
 
     protected abstract fun initiliazeUI()
 

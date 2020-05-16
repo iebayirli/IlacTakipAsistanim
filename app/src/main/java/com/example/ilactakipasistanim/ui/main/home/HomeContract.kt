@@ -1,12 +1,13 @@
-package com.example.ilactakipasistanim.ui.main.splash
+package com.example.ilactakipasistanim.ui.main.home
 
 import com.example.ilactakipasistanim.ui.base.BaseView
 
-class SplashContract {
+class HomeContract {
+
     interface View : BaseView{
 
     }
-    interface Presenter{
+    interface Presenter {
 
     }
 }

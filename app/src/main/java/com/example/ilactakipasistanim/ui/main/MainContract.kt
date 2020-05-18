@@ -5,9 +5,9 @@ import com.example.ilactakipasistanim.ui.base.BaseView
 class MainContract {
 
     interface View: BaseView{
-        fun showSplashFragment()
+        fun showMedicinesFragment()
     }
     interface Presenter {
-
+        fun onMecidinesClicked()
     }
 }

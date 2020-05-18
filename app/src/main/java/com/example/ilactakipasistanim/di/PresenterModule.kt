@@ -5,6 +5,8 @@ import com.example.ilactakipasistanim.ui.main.MainContract
 import com.example.ilactakipasistanim.ui.main.MainPresenter
 import com.example.ilactakipasistanim.ui.main.home.HomeContract
 import com.example.ilactakipasistanim.ui.main.home.HomePresenter
+import com.example.ilactakipasistanim.ui.main.medicines.MedicinesContract
+import com.example.ilactakipasistanim.ui.main.medicines.MedicinesPresenter
 import com.example.ilactakipasistanim.ui.onboarding.OnboardingContract
 import com.example.ilactakipasistanim.ui.onboarding.OnboardingPresenter
 import com.example.ilactakipasistanim.ui.splash.SplashContract
@@ -19,5 +21,6 @@ val presenterModule = module {
     factory { (view: OnboardingContract.View) -> OnboardingPresenter(view) }
     factory { (view: FirstInitContract.View) -> FirstInitPresenter(view)  }
     factory { (view: HomeContract.View) -> HomePresenter(view)  }
+    factory { (view: MedicinesContract.View) -> MedicinesPresenter(view)  }
 
 }

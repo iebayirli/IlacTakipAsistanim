@@ -8,6 +8,7 @@ import com.example.ilactakipasistanim.common.SharedPrefKey
 import com.example.ilactakipasistanim.ui.base.BaseActivity
 import com.example.ilactakipasistanim.ui.main.MainActivity
 import com.example.ilactakipasistanim.ui.onboarding.adapter.OnboardingAdapter
+import com.example.ilactakipasistanim.ui.user_first_init.FirstInitActivity
 import kotlinx.android.synthetic.main.activity_onboarding.*
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
@@ -34,6 +35,7 @@ class OnboardingActivity: BaseActivity<OnboardingPresenter>(), OnboardingContrac
         } else {
             buttonSkip.visibility = View.VISIBLE
             buttonSkip.isEnabled = true
+            buttonNext.text="İlerle"
         }
     }
 
@@ -64,10 +66,17 @@ class OnboardingActivity: BaseActivity<OnboardingPresenter>(), OnboardingContrac
 
 
     override fun finishOnBoarding() {
-        sharedPrefHelper?.saveBoolean(SharedPrefKey.IS_ON_BOARDING_SHOWED,false)
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
-        finish()
+        sharedPrefHelper?.saveBoolean(SharedPrefKey.IS_ON_BOARDING_SHOWED,true)
+        val isFirstInitDone = sharedPrefHelper.getBoolean(SharedPrefKey.IS_FIRST_INIT_DONE)?:false
+        if(isFirstInitDone){
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }else{
+            val intent = Intent(this, FirstInitActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 
 

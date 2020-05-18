@@ -37,7 +37,12 @@ class SharedPrefHelper(activity: Activity) {
 
 }
 enum class SharedPrefKey{
-    IS_ON_BOARDING_SHOWED;
+    IS_ON_BOARDING_SHOWED,
+    IS_FIRST_INIT_DONE,
+    NAME,
+    SURNAME,
+    AGE,
+    ENDEKS;
 
     override fun toString(): String {
         return this.name.toLowerCase();

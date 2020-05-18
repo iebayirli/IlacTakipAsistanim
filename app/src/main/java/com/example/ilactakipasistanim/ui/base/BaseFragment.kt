@@ -14,6 +14,7 @@ abstract class BaseFragment<T: BasePresenter<*>>: Fragment(), BaseView {
     protected abstract val presenter: T
     protected var baseActivity: BaseActivity<*>? = null
 
+
     abstract fun initializeUI()
     
     override fun onAttach(context: Context) {

@@ -3,7 +3,124 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.main.home.HomeFragment">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".15"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/profile_layout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintWidth_percent=".9"
+        app:layout_constraintHeight_percent=".3"
+        android:elevation="2dp"
+        android:background="@drawable/main_screen_profile_background"
+        app:layout_constraintTop_toBottomOf="@+id/guideline1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".05"/>
+        <TextView
+            android:id="@+id/adText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="İsim:"
+            android:textStyle="bold"
+            android:textSize="12dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="@id/guideline2"
+            app:layout_constraintBottom_toTopOf="@id/soyadText"/>
+        <TextView
+            android:id="@+id/text_view_ad"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="12dp"
+            android:layout_marginStart="4dp"
+            app:layout_constraintTop_toTopOf="@+id/adText"
+            app:layout_constraintStart_toEndOf="@+id/adText"
+            app:layout_constraintBottom_toBottomOf="@+id/adText"/>
+
+        <TextView
+            android:id="@+id/soyadText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Soy isim:"
+            android:textStyle="bold"
+            android:textSize="12dp"
+            app:layout_constraintTop_toBottomOf="@+id/adText"
+            app:layout_constraintStart_toStartOf="@+id/adText"
+            app:layout_constraintBottom_toTopOf="@id/yasText"/>
+
+        <TextView
+            android:id="@+id/text_view_soyad"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="12dp"
+            android:layout_marginStart="4dp"
+            app:layout_constraintTop_toTopOf="@+id/soyadText"
+            app:layout_constraintStart_toEndOf="@+id/soyadText"
+            app:layout_constraintBottom_toBottomOf="@+id/soyadText"/>
+        <TextView
+            android:id="@+id/yasText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Yaş:"
+            android:textStyle="bold"
+            android:textSize="12dp"
+            app:layout_constraintTop_toBottomOf="@+id/soyadText"
+            app:layout_constraintStart_toStartOf="@+id/soyadText"
+            app:layout_constraintBottom_toTopOf="@+id/endeksText"/>
+
+        <TextView
+            android:id="@+id/text_view_yas"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="12dp"
+            android:layout_marginStart="4dp"
+            app:layout_constraintTop_toTopOf="@+id/yasText"
+            app:layout_constraintStart_toEndOf="@+id/yasText"
+            app:layout_constraintBottom_toBottomOf="@+id/yasText"/>
+
+
+        <TextView
+            android:id="@+id/endeksText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Vücut Kitle Endeksiniz:"
+            android:textStyle="bold"
+            android:textSize="12dp"
+            app:layout_constraintTop_toBottomOf="@+id/yasText"
+            app:layout_constraintStart_toStartOf="@+id/yasText"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:id="@+id/text_view_endeks"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="12dp"
+            android:layout_marginStart="4dp"
+            app:layout_constraintTop_toTopOf="@+id/endeksText"
+            app:layout_constraintStart_toEndOf="@+id/endeksText"
+            app:layout_constraintBottom_toBottomOf="@+id/endeksText"/>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 

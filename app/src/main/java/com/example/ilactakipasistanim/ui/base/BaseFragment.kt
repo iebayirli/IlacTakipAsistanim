@@ -49,4 +49,10 @@ abstract class BaseFragment<T: BasePresenter<*>>: Fragment(), BaseView {
     override fun toast(message: String) {
         baseActivity?.toast(message)
     }
+    fun showLetterDialog(){
+        baseActivity?.showLetterDialog()
+    }
+    fun dismissLetterDialog(){
+        baseActivity?.dismissLetterDialog()
+    }
 }

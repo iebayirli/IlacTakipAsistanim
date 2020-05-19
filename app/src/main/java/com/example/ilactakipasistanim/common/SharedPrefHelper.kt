@@ -3,11 +3,14 @@ package com.example.ilactakipasistanim.common
 import android.app.Activity
 import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import java.util.*
 
 class SharedPrefHelper(activity: Activity) {
 
     private var sharedPreferences: SharedPreferences
+    private var gson = Gson()
 
     val PREF_NAME = "IlacTakipAsist_Prefs"
     init {
@@ -25,7 +28,19 @@ class SharedPrefHelper(activity: Activity) {
         edit.putString(key.toString(), value)
         edit.apply()
     }
+    fun saveManuelMedicines(key : SharedPrefKey, value: ArrayList<MedicinesClass>){
+        val edit =sharedPreferences.edit()
+        var json = gson.toJson(value)
+        edit.putString(key.toString(),json)
+        edit.apply()
+    }
+    fun getManuelMedicines(key : SharedPrefKey) : ArrayList<MedicinesClass>{
+        var json = sharedPreferences.getString(key.toString(),null)
+        var type = object : TypeToken<List<MedicinesClass>>() {}.type
+        var myList :ArrayList<MedicinesClass> = gson.fromJson(json,type)
 
+        return myList
+    }
 
     fun getBoolean(key: SharedPrefKey): Boolean {
         return sharedPreferences.getBoolean(key.toString(), false)
@@ -42,9 +57,16 @@ enum class SharedPrefKey{
     NAME,
     SURNAME,
     AGE,
-    ENDEKS;
+    ENDEKS,
+    MANUEL_ADD_MEDICINES,
+    ILK_ILAC;
 
     override fun toString(): String {
         return this.name.toLowerCase();
     }
 }
+data class MedicinesClass(var ilacAdi : String,
+                          var kullanimSekli : String,
+                          var baslangicTarihi : String,
+                          var kullanimAdedi : String,
+                          var isFromEnabiz : Boolean = false)

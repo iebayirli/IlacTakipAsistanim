@@ -5,6 +5,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import androidx.fragment.app.FragmentManager
+import com.example.ilactakipasistanim.common.AddMedicinesDialogScreen
 import com.example.ilactakipasistanim.common.SharedPrefHelper
 
 abstract class BaseActivity<T : BasePresenter<*>>: AppCompatActivity(), BaseView {
@@ -14,6 +15,9 @@ abstract class BaseActivity<T : BasePresenter<*>>: AppCompatActivity(), BaseView
 
     val sharedPrefHelper by lazy {
         SharedPrefHelper(this)
+    }
+    val addMedicinesDialogScreen  by lazy {
+        AddMedicinesDialogScreen(this, layoutInflater)
     }
 
     protected abstract fun initiliazeUI()
@@ -78,6 +82,17 @@ abstract class BaseActivity<T : BasePresenter<*>>: AppCompatActivity(), BaseView
             .replace(layoutId, fragment)
             .disallowAddToBackStack()
             .commit()
+    }
+
+    open fun showLetterDialog(){
+        if(addMedicinesDialogScreen.isShowing().not()){
+            addMedicinesDialogScreen.showLetterDialog()
+        }
+    }
+    open fun dismissLetterDialog(){
+        if(addMedicinesDialogScreen.isShowing()){
+            addMedicinesDialogScreen.dismissLetterDialog()
+        }
     }
 
 

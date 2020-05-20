@@ -121,7 +121,15 @@ class MedicinesFragment : BaseFragment<MedicinesPresenter>(), MedicinesContract.
 
     }
 
-    override fun onItemClicked(medicine: MedicinesClass) {
-        toast(medicine.ilacAdi)
+    override fun deleteMedicine(index: Int) {
+        manuelAddedMedicines.removeAt(index)
+    }
+
+    override fun onItemClicked(index : Int , isAddAlarm : Boolean) {
+       if(isAddAlarm){
+
+       }else{
+           presenter.deleteMedicineFromList(index)
+       }
     }
 }

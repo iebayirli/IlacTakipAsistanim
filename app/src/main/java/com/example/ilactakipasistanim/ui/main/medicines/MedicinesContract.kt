@@ -13,6 +13,7 @@ class MedicinesContract {
         fun initList(isTrue : Boolean)
         fun initRecyclerView()
         fun saveListToShared()
+        fun deleteMedicine(index : Int)
     }
     interface Presenter {
         fun inputControl(ilacAdi : String,
@@ -20,5 +21,6 @@ class MedicinesContract {
                          baslangicTarihi : String,
                          kullanımAdedi: String)
         fun initList(isTrue : Boolean)
+        fun deleteMedicineFromList(index : Int)
     }
 }

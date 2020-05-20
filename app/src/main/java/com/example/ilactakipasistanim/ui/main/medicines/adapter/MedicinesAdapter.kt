@@ -29,7 +29,7 @@ RecyclerView.Adapter<MedicinesAdapter.MedicinedViewHolder>(){
     }
 
     override fun onBindViewHolder(holder: MedicinedViewHolder, position: Int) {
-        holder.bind(activity,items[position],itemClickListener)
+        holder.bind(activity,items[position],itemClickListener,position)
     }
 
 
@@ -47,7 +47,8 @@ RecyclerView.Adapter<MedicinesAdapter.MedicinedViewHolder>(){
         fun bind(
             activity: Activity,
             medicine : MedicinesClass,
-            clickListener: RecyclerViewItemClickListener
+            clickListener: RecyclerViewItemClickListener,
+            index : Int
         ){
             if(medicine.isFromEnabiz){
                 itemView.imageViewLogo.visibility = View.VISIBLE
@@ -65,10 +66,10 @@ RecyclerView.Adapter<MedicinesAdapter.MedicinedViewHolder>(){
             kullanimAdedi.text=medicine.kullanimAdedi
 
             itemView.alarm_ekle_button.setOnClickListener {
-                clickListener.onItemClicked(medicine)
+                clickListener.onItemClicked(index , true)
             }
             itemView.ilaci_kaldir_button.setOnClickListener {
-                clickListener.onItemClicked(medicine)
+                clickListener.onItemClicked(index,false)
             }
 
         }
@@ -77,5 +78,5 @@ RecyclerView.Adapter<MedicinesAdapter.MedicinedViewHolder>(){
 
 }
 interface RecyclerViewItemClickListener{
-    fun onItemClicked(medicine : MedicinesClass)
+    fun onItemClicked(index : Int , isAddAlarm : Boolean)
 }

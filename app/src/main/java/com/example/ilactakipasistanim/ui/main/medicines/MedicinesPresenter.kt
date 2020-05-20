@@ -53,4 +53,18 @@ class MedicinesPresenter(view : MedicinesContract.View) : BasePresenter<Medicine
             }
         }
     }
+
+    override fun deleteMedicineFromList(index: Int) {
+
+        CoroutineScope(Dispatchers.IO).launch {
+
+            view?.deleteMedicine(index)
+
+            withContext(Dispatchers.Main){
+                view?.saveListToShared()
+                view?.initRecyclerView()
+            }
+        }
+    }
+
 }

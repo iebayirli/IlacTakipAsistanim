@@ -2,6 +2,7 @@ package com.example.ilactakipasistanim
 
 import android.app.Application
 import com.example.ilactakipasistanim.di.commonModule
+import com.example.ilactakipasistanim.di.network.networkModule
 import com.example.ilactakipasistanim.di.presenterModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -16,7 +17,7 @@ class IlacTakipAsistanimApplication : Application() {
         startKoin {
             androidLogger()
             androidContext(this@IlacTakipAsistanimApplication)
-            modules(listOf(presenterModule, commonModule))
+            modules(listOf(presenterModule, commonModule, networkModule))
         }
 
     }

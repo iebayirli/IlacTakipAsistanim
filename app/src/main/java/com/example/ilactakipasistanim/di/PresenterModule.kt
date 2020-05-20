@@ -1,6 +1,8 @@
 package com.example.ilactakipasistanim.di
 
 
+import com.example.ilactakipasistanim.ui.enabiz_connection.EnabizContract
+import com.example.ilactakipasistanim.ui.enabiz_connection.EnabizPresenter
 import com.example.ilactakipasistanim.ui.main.MainContract
 import com.example.ilactakipasistanim.ui.main.MainPresenter
 import com.example.ilactakipasistanim.ui.main.home.HomeContract
@@ -13,6 +15,7 @@ import com.example.ilactakipasistanim.ui.splash.SplashContract
 import com.example.ilactakipasistanim.ui.splash.SplashPresenter
 import com.example.ilactakipasistanim.ui.user_first_init.FirstInitContract
 import com.example.ilactakipasistanim.ui.user_first_init.FirstInitPresenter
+import org.koin.core.KoinComponent
 import org.koin.dsl.module
 
 val presenterModule = module {
@@ -22,5 +25,6 @@ val presenterModule = module {
     factory { (view: FirstInitContract.View) -> FirstInitPresenter(view)  }
     factory { (view: HomeContract.View) -> HomePresenter(view)  }
     factory { (view: MedicinesContract.View) -> MedicinesPresenter(view)  }
+    factory { (view: EnabizContract.View) -> EnabizPresenter(view)   }
 
 }

@@ -38,7 +38,7 @@ class MainActivity : BaseActivity<MainPresenter>(),MainContract.View {
         toolbarHeaderText.text = "İlaçlarım"
         guideline2.setGuidelinePercent(0.085f)
         guideline1.setGuidelinePercent(0.14f)
-        navigateFragmentWithBackStack<MedicinesFragment>(R.id.fragmentContainer)
+        navigateFragment<MedicinesFragment>(R.id.fragmentContainer)
     }
     private fun init(){
         close_button.visibility=View.GONE

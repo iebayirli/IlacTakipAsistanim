@@ -26,6 +26,9 @@
         <activity
             android:screenOrientation="portrait"
             android:name=".ui.user_first_init.FirstInitActivity" />
+        <activity
+            android:screenOrientation="portrait"
+            android:name=".ui.enabiz_connection.EnabizActivity" />
 
 
     </application>

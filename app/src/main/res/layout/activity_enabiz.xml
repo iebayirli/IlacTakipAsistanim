@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.enabiz_connection.EnabizActivity">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".1"/>
+    <ImageView
+        android:id="@+id/imageViewBackground"
+        android:src="@drawable/login_background"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:scaleType="fitXY"/>
+    <ImageView
+        android:id="@+id/appicon"
+        android:src="@drawable/splash_app_icon"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintWidth_percent="0.3"
+        app:layout_constraintTop_toTopOf="@id/guideline_top"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintDimensionRatio="1"/>
+    <TextView
+        android:id="@+id/splash_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="monospace"
+        android:lineSpacingExtra="5sp"
+        android:text="İ l a ç   T a k i p\nA s i s t a n ı m "
+        android:textAlignment="center"
+        android:textSize="12sp"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appicon" />
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="0dp"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintWidth_percent=".6"
+        android:background="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/splash_text" />
+
+    <TextView
+        android:id="@+id/girisText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Giriş"
+        android:textSize="32sp"
+        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="bold"
+        android:fontFamily="@font/roboto"
+        app:layout_constraintTop_toBottomOf="@+id/line"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+    <TextView
+        android:id="@+id/girisAltText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="T.C Kimlik Numaran ve\nE-Nabız Şifrenle Giriş Yap."
+        android:textColor="@android:color/white"
+        android:textAlignment="center"
+        android:fontFamily="@font/roboto_light"
+        android:textSize="16sp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/girisText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <EditText
+        android:id="@+id/edit_text_tc_no"
+        style="@style/BasicEditText"
+        app:layout_constraintTop_toBottomOf="@id/girisAltText"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:inputType="number"
+        android:hint="T.C Kimlik Numarası"
+        android:textSize="14sp"
+        app:layout_constraintWidth_percent=".8"/>
+    <EditText
+        android:id="@+id/edit_text_sifre"
+        style="@style/BasicEditText"
+        app:layout_constraintTop_toBottomOf="@id/edit_text_tc_no"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:inputType="textPassword"
+        android:hint="E-Nabız Şifresi"
+        android:textSize="14sp"
+        app:layout_constraintWidth_percent=".8"/>
+    <me.relex.circleindicator.CircleIndicator3
+        android:id="@+id/indicator"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        app:ci_drawable="@color/colorPrimaryDark"
+        app:ci_drawable_unselected="@color/colorPrimary"
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_sifre"
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="8dp"/>
+
+    <LinearLayout
+        android:id="@+id/medicines_linear_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintWidth_percent=".8"
+        app:layout_constraintTop_toBottomOf="@+id/indicator"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <Button
+            android:id="@+id/enabiz_iptal_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:layout_weight=".5"
+            android:minHeight="55dp"
+            android:background="@drawable/rounded_white_background"
+            android:elevation="2dp"
+            android:text="İptal"
+            android:textAllCaps="false"
+            android:textColor="@color/colorPrimaryDark" />
+        <Button
+            android:id="@+id/enabiz_giris_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".5"
+            android:elevation="2dp"
+            android:minHeight="55dp"
+            android:text="Giriş"
+            android:textAllCaps="false"
+            android:layout_margin="6dp"
+            android:textColor="@color/colorPrimary"
+            android:background="@drawable/rounded_blue_background"/>
+    </LinearLayout>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.88"/>
+    <TextView
+        android:id="@+id/textViewSignup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/roboto_light"
+        android:text="@string/register_account" android:textAlignment="center"
+        android:textColor="@android:color/white" android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline7"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

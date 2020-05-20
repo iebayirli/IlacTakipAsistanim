@@ -61,7 +61,7 @@
             android:minHeight="55dp"
             android:background="@drawable/rounded_white_background"
             android:elevation="2dp"
-            android:text="E-Nabızdan İlaç Getir"
+            android:text="E-Nabız'a Bağlan"
             android:textAllCaps="false"
             android:textColor="@color/colorPrimaryDark" />
         <Button

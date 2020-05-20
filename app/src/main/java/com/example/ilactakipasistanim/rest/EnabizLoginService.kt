@@ -11,5 +11,5 @@ import retrofit2.http.POST
 
 interface EnabizLoginService {
     @POST("getIlaclar")
-    suspend fun login(@Body loginRequest: EnabizRequest): StatusResponse<EnabizResponse,BasicStatusType>
+    suspend fun login(@Body loginRequest: EnabizRequest): StatusResponse<ArrayList<Medicines>,BasicStatusType>
 }

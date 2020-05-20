@@ -12,7 +12,7 @@ class MedicinesContract {
         fun succeedDismissDialog()
         fun initList(isTrue : Boolean)
         fun initRecyclerView()
-        fun saveListToShared(): Boolean
+        fun saveListToShared()
     }
     interface Presenter {
         fun inputControl(ilacAdi : String,

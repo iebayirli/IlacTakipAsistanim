@@ -9,7 +9,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.net.CookieManager
 import java.net.CookiePolicy
-
+import java.util.concurrent.TimeUnit
 
 
 val networkModule = module {
@@ -29,8 +29,13 @@ fun provideOkHttpClient(authInterceptor: AuthInterceptor): OkHttpClient {
     val cookieManager = CookieManager()
     cookieManager.setCookiePolicy(CookiePolicy.ACCEPT_ALL)
     //create a cookieManager so your client can be cookie persistant
-    return OkHttpClient().newBuilder().cookieJar(JavaNetCookieJar(cookieManager))
-        .addInterceptor(authInterceptor).build()
+//    return OkHttpClient().newBuilder().cookieJar(JavaNetCookieJar(cookieManager))
+//        .addInterceptor(authInterceptor).build()
+    return OkHttpClient().newBuilder()
+        .connectTimeout(40,TimeUnit.SECONDS)
+        .readTimeout(40,TimeUnit.SECONDS)
+        .addInterceptor(authInterceptor)
+        .build()
 }
 
 inline fun <reified T> provideService(retrofit: Retrofit): T {

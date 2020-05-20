@@ -117,7 +117,7 @@
             android:textColor="#414141"
             app:layout_constraintTop_toBottomOf="@+id/baslangicTarihi"
             app:layout_constraintStart_toStartOf="@+id/baslangicTarihi"
-            app:layout_constraintBottom_toBottomOf="@+id/muayeneYeri"
+            app:layout_constraintBottom_toTopOf="@+id/muayeneYeri"
             />
         <TextView
             android:id="@+id/text_view_kullanım_adedi"

@@ -4,6 +4,7 @@ import android.app.Activity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.marginBottom
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ilactakipasistanim.R
 import com.example.ilactakipasistanim.common.MedicinesClass
@@ -40,6 +41,7 @@ RecyclerView.Adapter<MedicinesAdapter.MedicinedViewHolder>(){
         var kullanimSekli = itemView.text_view_kullanim_sekli
         var baslangicTarihi = itemView.text_view_baslangic_tarihi
         var kullanimAdedi = itemView.text_view_kullanım_adedi
+        var muayeneYeri = itemView.text_view_muayene_yeri
 
 
         fun bind(
@@ -49,6 +51,12 @@ RecyclerView.Adapter<MedicinesAdapter.MedicinedViewHolder>(){
         ){
             if(medicine.isFromEnabiz){
                 itemView.imageViewLogo.visibility = View.VISIBLE
+                itemView.text_view_muayene_yeri.text = medicine.hastaneAdi
+
+            }else{
+                itemView.imageViewLogo.visibility= View.GONE
+                itemView.text_view_muayene_yeri.text = "Yok."
+
             }
             Utils.calculateRowItemSize(itemView.root,activity)
             ilacAdi.text = medicine.ilacAdi

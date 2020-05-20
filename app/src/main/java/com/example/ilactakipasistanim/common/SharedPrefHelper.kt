@@ -35,12 +35,13 @@ class SharedPrefHelper(activity: Activity) {
         edit.apply()
     }
     fun getManuelMedicines(key : SharedPrefKey) : ArrayList<MedicinesClass>{
-        var json = sharedPreferences.getString(key.toString(),null)
+        var json = sharedPreferences.getString(key.toString(),"")
         var type = object : TypeToken<List<MedicinesClass>>() {}.type
         var myList :ArrayList<MedicinesClass> = gson.fromJson(json,type)
 
         return myList
     }
+
 
     fun getBoolean(key: SharedPrefKey): Boolean {
         return sharedPreferences.getBoolean(key.toString(), false)
@@ -69,4 +70,5 @@ data class MedicinesClass(var ilacAdi : String,
                           var kullanimSekli : String,
                           var baslangicTarihi : String,
                           var kullanimAdedi : String,
+                          var hastaneAdi : String = " ",
                           var isFromEnabiz : Boolean = false)

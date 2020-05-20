@@ -55,4 +55,12 @@ abstract class BaseFragment<T: BasePresenter<*>>: Fragment(), BaseView {
     fun dismissLetterDialog(){
         baseActivity?.dismissLetterDialog()
     }
+
+   override fun showProgress() {
+        baseActivity?.showProgress()
+    }
+
+    override fun dismissProgress() {
+        baseActivity?.dismissProgress()
+    }
 }

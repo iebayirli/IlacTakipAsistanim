@@ -1,11 +1,14 @@
 package com.example.ilactakipasistanim.ui.base
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import androidx.fragment.app.FragmentManager
 import com.example.ilactakipasistanim.common.AddMedicinesDialogScreen
+import com.example.ilactakipasistanim.common.ProgressDialogScreen
 import com.example.ilactakipasistanim.common.SharedPrefHelper
 
 abstract class BaseActivity<T : BasePresenter<*>>: AppCompatActivity(), BaseView {
@@ -18,6 +21,10 @@ abstract class BaseActivity<T : BasePresenter<*>>: AppCompatActivity(), BaseView
     }
     val addMedicinesDialogScreen  by lazy {
         AddMedicinesDialogScreen(this, layoutInflater)
+    }
+
+    val progressDialog  by lazy {
+        ProgressDialogScreen(this, layoutInflater)
     }
 
     protected abstract fun initiliazeUI()
@@ -95,6 +102,18 @@ abstract class BaseActivity<T : BasePresenter<*>>: AppCompatActivity(), BaseView
         }
     }
 
+     override fun showProgress() {
+        if (progressDialog.isShowing().not())
+            progressDialog.showProgressDialog()
+    }
 
+     override fun dismissProgress() {
+        if (progressDialog.isShowing())
+            progressDialog.dismissProgressDialog()
+    }
 
+    fun openBrowser(url: String) {
+        val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        startActivity(browserIntent)
+    }
 }

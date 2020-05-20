@@ -26,15 +26,15 @@ class MedicinesPresenter(view : MedicinesContract.View) : BasePresenter<Medicine
             EmptyValidator(kullanımAdedi)
         )
         if(result.isSuccess){
-            CoroutineScope(Dispatchers.Main).launch{
+            CoroutineScope(Dispatchers.IO).launch{
 
-                async(Dispatchers.IO) { // background thread
-                    view?.saveManuelAddedMedicines(ilacAdi,kullanimSekli,baslangicTarihi,kullanımAdedi)
-                    view?.saveListToShared()
-                }
+                view?.saveManuelAddedMedicines(ilacAdi,kullanimSekli,baslangicTarihi,kullanımAdedi)
+                view?.saveListToShared()
 
+                withContext(Dispatchers.Main){
                     view?.initRecyclerView()
                     view?.succeedDismissDialog()
+                }
 
             }
         }else{
@@ -47,10 +47,10 @@ class MedicinesPresenter(view : MedicinesContract.View) : BasePresenter<Medicine
         CoroutineScope(Dispatchers.IO).launch {
 
             view?.initList(isTrue)
+
             launch(Dispatchers.Main) {
                 view?.initRecyclerView()
             }
-
         }
     }
 }

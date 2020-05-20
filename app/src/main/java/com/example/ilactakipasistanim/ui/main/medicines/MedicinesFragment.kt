@@ -26,7 +26,7 @@ class MedicinesFragment : BaseFragment<MedicinesPresenter>(), MedicinesContract.
         parametersOf(this)
     }
 
-    private var manuelAddedMedicines = ArrayList<MedicinesClass>()
+    var manuelAddedMedicines = ArrayList<MedicinesClass>()
     lateinit var  dialog : Dialog
 
 
@@ -81,12 +81,13 @@ class MedicinesFragment : BaseFragment<MedicinesPresenter>(), MedicinesContract.
     override fun initList(isTrue : Boolean){
 
         if(isTrue){
-            manuelAddedMedicines = baseActivity?.sharedPrefHelper?.getManuelMedicines(SharedPrefKey.MANUEL_ADD_MEDICINES)!!
+            manuelAddedMedicines.addAll( baseActivity?.sharedPrefHelper?.getManuelMedicines(SharedPrefKey.MANUEL_ADD_MEDICINES)!!)
         }
 
     }
     private fun startEnabiz(){
         startActivity(Intent(context!!,EnabizActivity::class.java))
+        baseActivity?.finish()
     }
 
     override fun initRecyclerView() {
@@ -114,11 +115,10 @@ class MedicinesFragment : BaseFragment<MedicinesPresenter>(), MedicinesContract.
         dialog.dismiss()
     }
 
-    override fun saveListToShared() : Boolean{
+    override fun saveListToShared() {
         baseActivity?.sharedPrefHelper?.saveManuelMedicines(SharedPrefKey.MANUEL_ADD_MEDICINES,manuelAddedMedicines)
         baseActivity?.sharedPrefHelper?.saveBoolean(SharedPrefKey.ILK_ILAC,true)
 
-        return true
     }
 
     override fun onItemClicked(medicine: MedicinesClass) {

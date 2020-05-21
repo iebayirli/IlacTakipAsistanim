@@ -26,6 +26,9 @@ class MainActivity : BaseActivity<MainPresenter>(),MainContract.View {
         medicinesButton.setOnClickListener {
             presenter.onMecidinesClicked()
         }
+        alarmButton.setOnClickListener {
+
+        }
         router_button_home.setOnClickListener {
             init()
         }
@@ -40,6 +43,11 @@ class MainActivity : BaseActivity<MainPresenter>(),MainContract.View {
         guideline1.setGuidelinePercent(0.14f)
         navigateFragment<MedicinesFragment>(R.id.fragmentContainer)
     }
+
+    override fun showAlarmsFragment() {
+
+    }
+
     private fun init(){
         close_button.visibility=View.GONE
         constLayout.visibility=View.VISIBLE

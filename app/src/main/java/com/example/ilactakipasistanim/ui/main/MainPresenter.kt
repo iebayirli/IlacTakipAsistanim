@@ -10,5 +10,9 @@ class MainPresenter(view : MainContract.View):BasePresenter<MainContract.View>(v
         view?.showMedicinesFragment()
     }
 
+    override fun onAlarmsClicked() {
+        view?.showAlarmsFragment()
+    }
+
 
 }

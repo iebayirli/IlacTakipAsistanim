@@ -125,7 +125,7 @@ class SetAlarmActivity : BaseActivity<SetAlarmPresenter>(), SetAlarmContract.Vie
 
         var alarmTime = calendar.timeInMillis
 
-        alarmManager?.setRepeating(AlarmManager.RTC_WAKEUP, alarmTime,AlarmManager.INTERVAL_DAY,pendingIntent)
+        alarmManager?.setInexactRepeating(AlarmManager.RTC_WAKEUP, alarmTime,AlarmManager.INTERVAL_DAY,pendingIntent)
         presenter.alarmSetted()
 
     }

@@ -1,10 +1,9 @@
 package com.example.ilactakipasistanim.ui.set_alarm
 
-import android.app.AlarmManager
-import android.app.PendingIntent
-import android.app.TimePickerDialog
+import android.app.*
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.view.View
 import com.example.ilactakipasistanim.R
 import com.example.ilactakipasistanim.common.MedicinesClass
@@ -35,12 +34,16 @@ class SetAlarmActivity : BaseActivity<SetAlarmPresenter>(), SetAlarmContract.Vie
     private var idList = ArrayList<String>()
 
     lateinit var alarmManager : AlarmManager
+    lateinit var notificationManager : NotificationManager
+
+    private var notID : Int = 0
 
     override fun initiliazeUI() {
 
         presenter.initMedicine()
 
         alarmManager=  this.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        createNotificationChannel()
 
         saat_sec_button.setOnClickListener {
             presenter.getFirstAlarm()
@@ -106,31 +109,47 @@ class SetAlarmActivity : BaseActivity<SetAlarmPresenter>(), SetAlarmContract.Vie
 
     override fun setAlarm() {
 
-        var alarmSaati  = alarmList[alarmList.size-1]
-        var saat = alarmSaati.substring(0,alarmSaati.indexOf(":"))
-        var dakika = alarmSaati.substring(alarmSaati.indexOf(":")+1)
-        var saniye= "00"
+        alarmList.forEach { alarmSaati ->
 
+            var saat = alarmSaati.substring(0,alarmSaati.indexOf(":"))
+            var dakika = alarmSaati.substring(alarmSaati.indexOf(":")+1)
+            var saniye= "00"
 
-        var id = medicine.ilacAdi.trim()+":"+makeUniqueID()
+            notID+=1
+            var id = medicine.ilacAdi.trim()+":"+notID.toString()
 
-        var intent = Intent(this, AlarmReceiver::class.java)
-        intent.putExtra("ilac",id)
-        var pendingIntent = PendingIntent.getBroadcast(this,1,intent,0)
+            var intent = Intent(this, AlarmReceiver::class.java)
+            intent.putExtra("ilac",id)
+            var pendingIntent = PendingIntent.getBroadcast(this,notID,intent,0)
 
-        var calendar = Calendar.getInstance()
-        calendar.set(Calendar.HOUR_OF_DAY,saat.toInt())
-        calendar.set(Calendar.MINUTE,dakika.toInt())
-        calendar.set(Calendar.SECOND, saniye.toInt())
+            var calendar = Calendar.getInstance()
+            calendar.set(Calendar.HOUR_OF_DAY,saat.toInt())
+            calendar.set(Calendar.MINUTE,dakika.toInt())
+            calendar.set(Calendar.SECOND, saniye.toInt())
+            calendar.set(Calendar.MILLISECOND,saniye.toInt())
 
-        var alarmTime = calendar.timeInMillis
+            var alarmTime = calendar.timeInMillis
 
-        alarmManager?.setInexactRepeating(AlarmManager.RTC_WAKEUP, alarmTime,AlarmManager.INTERVAL_DAY,pendingIntent)
+            alarmManager?.setRepeating(AlarmManager.RTC_WAKEUP, alarmTime,AlarmManager.INTERVAL_DAY,pendingIntent)
+
+        }
         presenter.alarmSetted()
 
     }
     private fun makeUniqueID() : String {
         return UUID.randomUUID().toString()
+    }
+    private fun createNotificationChannel(){
+        notID = (System.currentTimeMillis()/1000).toInt()
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            notificationManager = this.getSystemService(NotificationManager::class.java)
+            val importance = NotificationManager.IMPORTANCE_DEFAULT
+            var channel = NotificationChannel(notID.toString(),"ilacTakipAsistanim",importance)
+            notificationManager.createNotificationChannel(channel)
+        } else {
+
+        }
+
     }
 
 }

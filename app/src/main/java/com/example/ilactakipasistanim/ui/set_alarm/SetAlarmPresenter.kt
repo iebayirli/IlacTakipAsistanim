@@ -50,6 +50,7 @@ class SetAlarmPresenter(view : SetAlarmContract.View) : BasePresenter<SetAlarmCo
 
     override fun alarmSetted() {
         view?.toast("Alarm Ayarlandı")
+        view?.startMain()
     }
 
     private fun calculateTimes(baslangicSaati: String, kullanimAdedi: Int) : ArrayList<String>{
@@ -66,7 +67,6 @@ class SetAlarmPresenter(view : SetAlarmContract.View) : BasePresenter<SetAlarmCo
 
         var baslangic = timeFormat.parse(baslangicSaati)
         var addedTime = timeFormat.parse(aralik)
-        var returnedString :String = " "
 
         for(i in kullanimAdedi downTo 1){
             var sum = baslangic.time + addedTime.time

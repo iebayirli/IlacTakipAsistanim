@@ -37,7 +37,11 @@
             android:screenOrientation="portrait"
             android:name=".ui.set_alarm.SetAlarmActivity" />
 
-        <receiver android:name=".utils.AlarmReceiver"/>
+        <activity android:name=".utils.StopAlarmActivity"/>
+
+        <receiver android:name=".utils.AlarmReceiver" android:enabled="true" android:exported="true"/>
+
+        <receiver android:name=".utils.CloseNotificationReceiver" android:enabled="true" android:exported="true"/>
     </application>
 
 </manifest>

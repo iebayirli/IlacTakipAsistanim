@@ -44,7 +44,7 @@ class EnabizPresenter(view : EnabizContract.View): BasePresenter<EnabizContract.
                                 it.ilacAdi,
                                 it.kullanimSekli,
                                 it.receteTarihi,
-                                it.kullanimAdedi,
+                                it.kullanimSayisi,
                                 it.hastaneAdi,
                                 true
                             )

@@ -11,6 +11,8 @@ import com.example.ilactakipasistanim.ui.main.medicines.MedicinesContract
 import com.example.ilactakipasistanim.ui.main.medicines.MedicinesPresenter
 import com.example.ilactakipasistanim.ui.onboarding.OnboardingContract
 import com.example.ilactakipasistanim.ui.onboarding.OnboardingPresenter
+import com.example.ilactakipasistanim.ui.set_alarm.SetAlarmContract
+import com.example.ilactakipasistanim.ui.set_alarm.SetAlarmPresenter
 import com.example.ilactakipasistanim.ui.splash.SplashContract
 import com.example.ilactakipasistanim.ui.splash.SplashPresenter
 import com.example.ilactakipasistanim.ui.user_first_init.FirstInitContract
@@ -26,5 +28,6 @@ val presenterModule = module {
     factory { (view: HomeContract.View) -> HomePresenter(view)  }
     factory { (view: MedicinesContract.View) -> MedicinesPresenter(view)  }
     factory { (view: EnabizContract.View) -> EnabizPresenter(view)   }
+    factory { (view: SetAlarmContract.View) -> SetAlarmPresenter(view)   }
 
 }

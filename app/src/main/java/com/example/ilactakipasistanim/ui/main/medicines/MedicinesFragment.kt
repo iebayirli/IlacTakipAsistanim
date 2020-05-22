@@ -12,6 +12,7 @@ import com.example.ilactakipasistanim.ui.base.BaseFragment
 import com.example.ilactakipasistanim.ui.enabiz_connection.EnabizActivity
 import com.example.ilactakipasistanim.ui.main.medicines.adapter.MedicinesAdapter
 import com.example.ilactakipasistanim.ui.main.medicines.adapter.RecyclerViewItemClickListener
+import com.example.ilactakipasistanim.ui.set_alarm.SetAlarmActivity
 import kotlinx.android.synthetic.main.fragment_medicines.*
 import kotlinx.android.synthetic.main.item_add_medicines.*
 import org.koin.android.ext.android.inject
@@ -125,9 +126,15 @@ class MedicinesFragment : BaseFragment<MedicinesPresenter>(), MedicinesContract.
         manuelAddedMedicines.removeAt(index)
     }
 
+    override fun openAlarmActivity() {
+        startActivity(Intent(context,SetAlarmActivity::class.java))
+        baseActivity?.finish()
+    }
+
     override fun onItemClicked(index : Int , isAddAlarm : Boolean) {
        if(isAddAlarm){
-
+           baseActivity?.sharedPrefHelper?.saveAlarmMedicine(SharedPrefKey.ALARM_MEDICINE, manuelAddedMedicines[index])
+           presenter.addAlarmClicked()
        }else{
            presenter.deleteMedicineFromList(index)
        }

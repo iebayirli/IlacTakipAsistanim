@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.set_alarm.SetAlarmActivity">
+
+    <TextView
+        android:id="@+id/header_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Alarm Ekleme Ekranı"
+        android:textAlignment="center"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimaryDark"
+        android:fontFamily="@font/roboto_light"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_top"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".08"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/tmp"
+        android:layout_width="0dp"
+        android:background="@drawable/rounded_card_view_background"
+        android:layout_height="wrap_content"
+        app:layout_constraintWidth_percent=".9"
+        android:elevation="2dp"
+        app:layout_constraintTop_toTopOf="@id/guideline_top"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:id="@+id/imageViewLogo"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/enabiz"
+            android:scaleType="centerInside"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:id="@+id/ilacAdiText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="İlaç Adı:"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/roboto_light"
+            android:textColor="#414141"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/kullanimSekliTest"
+            />
+        <TextView
+            android:id="@+id/text_view_ilac_adi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="İlac Adi"
+            android:textSize="12sp"
+            android:layout_marginStart="4dp"
+            android:fontFamily="@font/roboto_light"
+            android:textColor="#414141"
+            app:layout_constraintTop_toTopOf="@+id/ilacAdiText"
+            app:layout_constraintStart_toEndOf="@+id/ilacAdiText"/>
+        <TextView
+            android:id="@+id/kullanimSekliTest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kullanım Şekli:"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/roboto_light"
+            android:textColor="#414141"
+            app:layout_constraintTop_toBottomOf="@+id/ilacAdiText"
+            app:layout_constraintStart_toStartOf="@+id/ilacAdiText"
+            app:layout_constraintBottom_toTopOf="@+id/baslangicTarihi"/>
+        <TextView
+            android:id="@+id/text_view_kullanim_sekli"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="İlac Adi"
+            android:textSize="12sp"
+            android:layout_marginStart="4dp"
+            android:fontFamily="@font/roboto_light"
+            android:textColor="#414141"
+            app:layout_constraintTop_toTopOf="@+id/kullanimSekliTest"
+            app:layout_constraintStart_toEndOf="@+id/kullanimSekliTest" />
+        <TextView
+            android:id="@+id/baslangicTarihi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Başlangıç Tarihi:"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/roboto_light"
+            android:textColor="#414141"
+            app:layout_constraintTop_toBottomOf="@+id/kullanimSekliTest"
+            app:layout_constraintStart_toStartOf="@+id/kullanimSekliTest"
+            app:layout_constraintBottom_toTopOf="@+id/kullanimAdedi"/>
+
+        <TextView
+            android:id="@+id/text_view_baslangic_tarihi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="İlac Adi"
+            android:textSize="12sp"
+            android:layout_marginStart="4dp"
+            android:fontFamily="@font/roboto_light"
+            android:textColor="#414141"
+            app:layout_constraintTop_toTopOf="@+id/baslangicTarihi"
+            app:layout_constraintStart_toEndOf="@+id/baslangicTarihi"/>
+
+        <TextView
+            android:id="@+id/kullanimAdedi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kullanım Adedi:"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/roboto_light"
+            android:textColor="#414141"
+            app:layout_constraintTop_toBottomOf="@+id/baslangicTarihi"
+            app:layout_constraintStart_toStartOf="@+id/baslangicTarihi"
+            app:layout_constraintBottom_toTopOf="@+id/muayeneYeri"
+            />
+        <TextView
+            android:id="@+id/text_view_kullanım_adedi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="İlac Adi"
+            android:textSize="12sp"
+            android:layout_marginStart="4dp"
+            android:fontFamily="@font/roboto_light"
+            android:textColor="#414141"
+            app:layout_constraintTop_toTopOf="@+id/kullanimAdedi"
+            app:layout_constraintStart_toEndOf="@+id/kullanimAdedi"/>
+        <TextView
+            android:id="@+id/muayeneYeri"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Muayene Yeri:"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/roboto_light"
+            android:textColor="#414141"
+            app:layout_constraintTop_toBottomOf="@+id/kullanimAdedi"
+            app:layout_constraintStart_toStartOf="@+id/kullanimAdedi"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+        <TextView
+            android:id="@+id/text_view_muayene_yeri"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="İlac Adi"
+            android:textSize="12sp"
+            android:layout_marginStart="4dp"
+            android:fontFamily="@font/roboto_light"
+            android:textColor="#414141"
+            app:layout_constraintTop_toTopOf="@+id/muayeneYeri"
+            app:layout_constraintStart_toEndOf="@+id/muayeneYeri"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/saat_sec_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/tmp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Başlangıç Saati Seçin"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        app:layout_constraintWidth_percent=".85"
+        android:background="@drawable/rounded_blue_background"/>
+
+    <TextView
+        android:id="@+id/baslangicsaati"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Başlangıç Saati:"
+        android:textColor="#414141"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/roboto_light"
+        app:layout_constraintTop_toBottomOf="@+id/saat_sec_button"
+        app:layout_constraintStart_toStartOf="@+id/tmp"/>
+    <TextView
+        android:id="@+id/text_view_baslangic_saati"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_light"
+        android:textSize="14sp"
+        android:layout_marginStart="4dp"
+        app:layout_constraintTop_toTopOf="@+id/baslangicsaati"
+        app:layout_constraintStart_toEndOf="@+id/baslangicsaati"
+        app:layout_constraintBottom_toBottomOf="@+id/baslangicsaati"/>
+    <TextView
+        android:id="@+id/hesaplananalarmlar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hesaplanan Alarm Saatleri:"
+        android:textColor="#414141"
+        android:layout_marginTop="16dp"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/roboto_light"
+        app:layout_constraintTop_toBottomOf="@+id/baslangicsaati"
+        app:layout_constraintStart_toStartOf="@+id/tmp"/>
+
+    <TextView
+        android:id="@+id/text_view_hesaplanan_saatler"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_light"
+        android:textSize="14sp"
+        android:layout_marginStart="4dp"
+        app:layout_constraintTop_toTopOf="@+id/hesaplananalarmlar"
+        app:layout_constraintStart_toEndOf="@+id/hesaplananalarmlar"
+        app:layout_constraintBottom_toBottomOf="@+id/hesaplananalarmlar"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".85"/>
+
+    <LinearLayout
+        android:id="@+id/add_alar_linear_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintWidth_percent=".85"
+        app:layout_constraintTop_toBottomOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <Button
+            android:id="@+id/set_alarm_iptal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:layout_weight=".5"
+            android:minHeight="55dp"
+            android:background="@drawable/rounded_white_background"
+            android:elevation="2dp"
+            android:text="İptal"
+            android:textAllCaps="false"
+            android:textColor="@color/colorPrimaryDark" />
+        <Button
+            android:id="@+id/set_alarm_ekle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".5"
+            android:elevation="2dp"
+            android:minHeight="55dp"
+            android:text="Alarm Ekle"
+            android:textAllCaps="false"
+            android:layout_margin="6dp"
+            android:textColor="@color/colorPrimary"
+            android:background="@drawable/rounded_blue_background"/>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

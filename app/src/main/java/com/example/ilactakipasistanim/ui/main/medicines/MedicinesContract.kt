@@ -14,6 +14,7 @@ class MedicinesContract {
         fun initRecyclerView()
         fun saveListToShared()
         fun deleteMedicine(index : Int)
+        fun openAlarmActivity()
     }
     interface Presenter {
         fun inputControl(ilacAdi : String,
@@ -22,5 +23,6 @@ class MedicinesContract {
                          kullanımAdedi: String)
         fun initList(isTrue : Boolean)
         fun deleteMedicineFromList(index : Int)
+        fun addAlarmClicked()
     }
 }

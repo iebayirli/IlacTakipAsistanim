@@ -67,4 +67,8 @@ class MedicinesPresenter(view : MedicinesContract.View) : BasePresenter<Medicine
         }
     }
 
+    override fun addAlarmClicked() {
+        view?.openAlarmActivity()
+    }
+
 }

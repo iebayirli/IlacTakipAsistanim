@@ -5,6 +5,8 @@ import com.example.ilactakipasistanim.ui.enabiz_connection.EnabizContract
 import com.example.ilactakipasistanim.ui.enabiz_connection.EnabizPresenter
 import com.example.ilactakipasistanim.ui.main.MainContract
 import com.example.ilactakipasistanim.ui.main.MainPresenter
+import com.example.ilactakipasistanim.ui.main.alarms.AlarmsContract
+import com.example.ilactakipasistanim.ui.main.alarms.AlarmsPresenter
 import com.example.ilactakipasistanim.ui.main.home.HomeContract
 import com.example.ilactakipasistanim.ui.main.home.HomePresenter
 import com.example.ilactakipasistanim.ui.main.medicines.MedicinesContract
@@ -29,5 +31,6 @@ val presenterModule = module {
     factory { (view: MedicinesContract.View) -> MedicinesPresenter(view)  }
     factory { (view: EnabizContract.View) -> EnabizPresenter(view)   }
     factory { (view: SetAlarmContract.View) -> SetAlarmPresenter(view)   }
+    factory { (view : AlarmsContract.View) -> AlarmsPresenter(view) }
 
 }

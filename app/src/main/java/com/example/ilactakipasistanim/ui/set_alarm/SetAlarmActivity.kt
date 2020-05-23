@@ -6,11 +6,13 @@ import android.content.Intent
 import android.os.Build
 import android.view.View
 import com.example.ilactakipasistanim.R
+import com.example.ilactakipasistanim.common.AlarmsClass
 import com.example.ilactakipasistanim.common.MedicinesClass
 import com.example.ilactakipasistanim.common.SharedPrefKey
 import com.example.ilactakipasistanim.ui.base.BaseActivity
 import com.example.ilactakipasistanim.ui.main.MainActivity
 import com.example.ilactakipasistanim.utils.AlarmReceiver
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_set_alarm.*
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
@@ -36,6 +38,8 @@ class SetAlarmActivity : BaseActivity<SetAlarmPresenter>(), SetAlarmContract.Vie
     lateinit var alarmManager : AlarmManager
     lateinit var notificationManager : NotificationManager
 
+    private var alarmListFromShared = ArrayList<String>()
+
     private var notID : Int = 0
 
     override fun initiliazeUI() {
@@ -60,6 +64,10 @@ class SetAlarmActivity : BaseActivity<SetAlarmPresenter>(), SetAlarmContract.Vie
 
     override fun getMedicineFromShared() {
         medicine = sharedPrefHelper?.getAlarmMedicine(SharedPrefKey.ALARM_MEDICINE)
+        var result = sharedPrefHelper?.getBoolean(SharedPrefKey.INIT_ALARM_LIST)?:false
+        if(result){
+            alarmListFromShared.addAll(sharedPrefHelper?.getAlarmList(SharedPrefKey.ALARMS_LIST))
+        }
     }
 
     override fun setMedicineToUI() {
@@ -110,7 +118,6 @@ class SetAlarmActivity : BaseActivity<SetAlarmPresenter>(), SetAlarmContract.Vie
     }
 
     override fun setAlarm() {
-
         alarmList.forEach { alarmSaati ->
 
             var saat = alarmSaati.substring(0,alarmSaati.indexOf(":"))
@@ -120,6 +127,7 @@ class SetAlarmActivity : BaseActivity<SetAlarmPresenter>(), SetAlarmContract.Vie
 
             notID = (System.currentTimeMillis()/1000).toInt()
             createNotificationChannel(notID.toString())
+            idList.add(notID.toString())
 
             var id = medicine.ilacAdi.trim()+":"+notID.toString()
 
@@ -134,16 +142,26 @@ class SetAlarmActivity : BaseActivity<SetAlarmPresenter>(), SetAlarmContract.Vie
             calendar.set(Calendar.MILLISECOND,saniye.toInt())
 
             var alarmTime = calendar.timeInMillis
-
-            alarmManager?.setRepeating(AlarmManager.RTC_WAKEUP, alarmTime,AlarmManager.INTERVAL_DAY,pendingIntent)
+            //AlarmManager.INTERVAL_DAY
+            alarmManager?.setExact(AlarmManager.RTC_WAKEUP, alarmTime,pendingIntent)
 
         }
         presenter.alarmSetted()
 
     }
-    private fun makeUniqueID() : String {
-        return UUID.randomUUID().toString()
+
+    override fun saveAlarmListToShared() {
+        var alarmClass = AlarmsClass(medicine,alarmList,idList)
+        var json = Gson().toJson(alarmClass)
+        alarmListFromShared.add(json)
+
+        sharedPrefHelper?.saveAlarmList(SharedPrefKey.ALARMS_LIST,alarmListFromShared)
+        sharedPrefHelper?.saveBoolean(SharedPrefKey.INIT_ALARM_LIST,true)
+
+        startActivity(Intent(this,MainActivity::class.java))
+        finish()
     }
+
     private fun createNotificationChannel(id : String){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
             val importance = NotificationManager.IMPORTANCE_DEFAULT
@@ -152,7 +170,7 @@ class SetAlarmActivity : BaseActivity<SetAlarmPresenter>(), SetAlarmContract.Vie
         } else {
 
         }
-
     }
+
 
 }

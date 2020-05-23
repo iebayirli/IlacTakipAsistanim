@@ -71,6 +71,7 @@ RecyclerView.Adapter<MedicinesAdapter.MedicinedViewHolder>(){
                 clickListener.onItemClicked(index,false)
             }
 
+
         }
     }
 

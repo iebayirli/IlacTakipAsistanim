@@ -11,6 +11,7 @@ class SetAlarmContract {
         fun setTimePickerDialog()
         fun setCalculatedAlarms()
         fun setAlarm()
+        fun saveAlarmListToShared()
     }
     interface Presenter{
         fun initMedicine()

@@ -3,6 +3,7 @@ package com.example.ilactakipasistanim.ui.main
 import android.view.View
 import com.example.ilactakipasistanim.R
 import com.example.ilactakipasistanim.ui.base.BaseActivity
+import com.example.ilactakipasistanim.ui.main.alarms.AlarmsFragment
 import com.example.ilactakipasistanim.ui.main.home.HomeFragment
 import com.example.ilactakipasistanim.ui.main.medicines.MedicinesFragment
 import org.koin.android.ext.android.inject
@@ -27,7 +28,7 @@ class MainActivity : BaseActivity<MainPresenter>(),MainContract.View {
             presenter.onMecidinesClicked()
         }
         alarmButton.setOnClickListener {
-
+            presenter.onAlarmsClicked()
         }
         router_button_home.setOnClickListener {
             init()
@@ -45,7 +46,12 @@ class MainActivity : BaseActivity<MainPresenter>(),MainContract.View {
     }
 
     override fun showAlarmsFragment() {
-
+        close_button.visibility=View.VISIBLE
+        constLayout.visibility=View.GONE
+        toolbarHeaderText.text = "Alarmlarım"
+        guideline2.setGuidelinePercent(0.085f)
+        guideline1.setGuidelinePercent(0.14f)
+        navigateFragment<AlarmsFragment>(R.id.fragmentContainer)
     }
 
     private fun init(){

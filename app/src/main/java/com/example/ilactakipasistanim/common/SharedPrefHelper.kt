@@ -29,22 +29,22 @@ class SharedPrefHelper(activity: Activity) {
         edit.putString(key.toString(), value)
         edit.apply()
     }
-    fun saveManuelMedicines(key : SharedPrefKey, value: ArrayList<MedicinesClass>){
-        val edit =sharedPreferences.edit()
+    fun saveAlarmList(key : SharedPrefKey, value : ArrayList<String>){
+        val edit = sharedPreferences.edit()
         var json = gson.toJson(value)
         edit.putString(key.toString(),json)
         edit.apply()
     }
-    fun getIDList(key : SharedPrefKey) : ArrayList<String>{
+    fun getAlarmList(key : SharedPrefKey): ArrayList<String>{
         var json = sharedPreferences.getString(key.toString(),"")
         var type = object : TypeToken<ArrayList<String>>() {}.type
-        var myList :ArrayList<String> = gson.fromJson(json,type)
+        var myList : ArrayList<String> = gson.fromJson(json,type)
 
         return myList
     }
-    fun saveIDList(key : SharedPrefKey , items : ArrayList<String>){
+    fun saveManuelMedicines(key : SharedPrefKey, value: ArrayList<MedicinesClass>){
         val edit =sharedPreferences.edit()
-        var json = gson.toJson(items)
+        var json = gson.toJson(value)
         edit.putString(key.toString(),json)
         edit.apply()
     }
@@ -84,7 +84,8 @@ enum class SharedPrefKey{
     ENDEKS,
     MANUEL_ADD_MEDICINES,
     ILK_ILAC,
-    UNIQUE_ID_LIST,
+    ALARMS_LIST,
+    INIT_ALARM_LIST,
     ALARM_MEDICINE;
 
     override fun toString(): String {
@@ -97,3 +98,7 @@ data class MedicinesClass(var ilacAdi : String,
                           var kullanimSayisi : String,
                           var hastaneAdi : String = " ",
                           var isFromEnabiz : Boolean = false)
+
+data class AlarmsClass(var medicine : MedicinesClass,
+                       var alarmSaatleri : ArrayList<String>,
+                       var ids : ArrayList<String>)

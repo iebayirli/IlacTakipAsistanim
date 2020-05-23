@@ -50,7 +50,7 @@ class SetAlarmPresenter(view : SetAlarmContract.View) : BasePresenter<SetAlarmCo
 
     override fun alarmSetted() {
         view?.toast("Alarm Ayarlandı")
-        view?.startMain()
+        view?.saveAlarmListToShared()
     }
 
     private fun calculateTimes(baslangicSaati: String, kullanimAdedi: Int) : ArrayList<String>{

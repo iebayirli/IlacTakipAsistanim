@@ -58,7 +58,8 @@ class SetAlarmPresenter(view : SetAlarmContract.View) : BasePresenter<SetAlarmCo
         var liste = ArrayList<String>()
         var aralik : String = "00:00"
         var timeFormat = SimpleDateFormat("HH:mm")
-        timeFormat.timeZone = TimeZone.getTimeZone("UTC")
+        timeFormat.timeZone = TimeZone.getTimeZone("GMT")
+
 
         when(kullanimAdedi){
             2 -> aralik = "12:00"

@@ -18,7 +18,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintWidth_percent=".9"
-        app:layout_constraintHeight_percent=".3"
+        app:layout_constraintHeight_percent=".22"
         android:elevation="2dp"
         android:background="@drawable/rounded_profile_background"
         app:layout_constraintTop_toBottomOf="@+id/guideline1"
@@ -131,24 +131,129 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <TextView
+        android:id="@+id/home_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="İlaç alarmın yolda"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:fontFamily="@font/roboto_light"
+        android:textColor="@color/colorPrimaryDark"
+        app:layout_constraintTop_toBottomOf="@+id/profile_layout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/mainScreenCircle"
+        />
+
+    <ImageView
+        android:id="@+id/mainScreenCircle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/circle_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/home_text"
+        app:layout_constraintVertical_bias="0.5"
+        app:layout_constraintHeight_percent=".5"
+        app:layout_constraintWidth_percent="0.8" />
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_start"
+        android:id="@+id/guideline11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.05"/>
+        app:layout_constraintGuide_percent="0.2" />
+
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_middle"
+        android:id="@+id/guideline17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent=".4"/>
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_bottom"
+        app:layout_constraintGuide_percent="0.8" />
+
+    <TextView
+        android:id="@+id/kalanVakitText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".8"/>
+        android:layout_margin="8dp"
+        android:textSize="12sp"
+        android:fontFamily="@font/roboto_light"
+        android:text="Alarma Kalan Vakit"
+        app:layout_constraintBottom_toTopOf="@+id/tmpHome"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/tmpHome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/mainScreenCircle"
+        app:layout_constraintEnd_toStartOf="@+id/guideline17"
+        app:layout_constraintStart_toStartOf="@+id/guideline11"
+        app:layout_constraintTop_toTopOf="@+id/mainScreenCircle">
+
+        <TextView
+            android:id="@+id/saat_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="09"
+            android:fontFamily="@font/roboto_light"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@+id/textView4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="saat"
+            android:fontFamily="@font/roboto_light"
+            android:textSize="12sp"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="@+id/saat_text"
+            app:layout_constraintStart_toStartOf="@+id/saat_text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/saat_text" />
+
+        <TextView
+            android:id="@+id/dakika_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:fontFamily="@font/roboto_light"
+            android:text="09"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@+id/textView3"
+            app:layout_constraintStart_toEndOf="@+id/textView14"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_light"
+            android:text="dakika"
+            android:textSize="12sp"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/dakika_text"
+            app:layout_constraintTop_toBottomOf="@+id/dakika_text" />
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:fontFamily="@font/roboto_light"
+            android:text="."
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@+id/saat_text"
+            app:layout_constraintEnd_toStartOf="@+id/dakika_text"
+            app:layout_constraintTop_toTopOf="@+id/saat_text" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

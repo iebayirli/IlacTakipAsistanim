@@ -59,6 +59,7 @@ class AlarmsFragment : BaseFragment<AlarmsPresenter>(), AlarmsContract.View , Al
             alarminiz_bulunmamakta.visibility=View.VISIBLE
             alarminiz_bulunmamakta.text="Hiç Alarmınız Bulunmamakta"
             alarm_recyclerview.visibility=View.GONE
+            baseActivity?.sharedPrefHelper?.saveBoolean(SharedPrefKey.INIT_ALARM_LIST,false)
         }else{
             alarminiz_bulunmamakta.visibility=View.GONE
             alarm_recyclerview.visibility=View.VISIBLE

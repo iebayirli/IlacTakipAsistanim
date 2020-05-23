@@ -57,6 +57,7 @@ class MedicinesFragment : BaseFragment<MedicinesPresenter>(), MedicinesContract.
 
                 presenter.inputControl(ilacAdi,kullanimSekli,baslangicTarihi,kullanimAdedi)
 
+
             }
 
             dialog.close_window.setOnClickListener {

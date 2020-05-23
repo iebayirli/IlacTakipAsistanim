@@ -27,13 +27,14 @@ class AlarmReceiver : BroadcastReceiver() {
 
         notificationID = id!!.substring(id!!.indexOf(":")+1)
 
+
         var intentClose = Intent(context, CloseNotificationReceiver::class.java)
         var stopIntent = PendingIntent.getBroadcast(context,notificationID.toInt(),intentClose,0)
 
         var builder = NotificationCompat.Builder(context!!, notificationID)
             .setSmallIcon(R.drawable.splash_app_icon)
             .setContentTitle("İlaç Takip Asistanım")
-            .setContentText(ilacAdi+" Kullanma Vaktin Geldi!")
+            .setContentText(ilacAdi+" Kullanma Vaktin Geldi!" + notificationID.toString())
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
             .addAction(R.drawable.notification_alarm_icon,"Alarmı Durdur",stopIntent)
 

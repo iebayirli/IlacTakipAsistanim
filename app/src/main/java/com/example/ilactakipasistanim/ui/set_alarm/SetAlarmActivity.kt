@@ -43,7 +43,9 @@ class SetAlarmActivity : BaseActivity<SetAlarmPresenter>(), SetAlarmContract.Vie
         presenter.initMedicine()
 
         alarmManager=  this.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        createNotificationChannel()
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            notificationManager = this.getSystemService(NotificationManager::class.java)
+        }
 
         saat_sec_button.setOnClickListener {
             presenter.getFirstAlarm()
@@ -115,7 +117,10 @@ class SetAlarmActivity : BaseActivity<SetAlarmPresenter>(), SetAlarmContract.Vie
             var dakika = alarmSaati.substring(alarmSaati.indexOf(":")+1)
             var saniye= "00"
 
-            notID+=1
+
+            notID = (System.currentTimeMillis()/1000).toInt()
+            createNotificationChannel(notID.toString())
+
             var id = medicine.ilacAdi.trim()+":"+notID.toString()
 
             var intent = Intent(this, AlarmReceiver::class.java)
@@ -139,12 +144,10 @@ class SetAlarmActivity : BaseActivity<SetAlarmPresenter>(), SetAlarmContract.Vie
     private fun makeUniqueID() : String {
         return UUID.randomUUID().toString()
     }
-    private fun createNotificationChannel(){
-        notID = (System.currentTimeMillis()/1000).toInt()
+    private fun createNotificationChannel(id : String){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
-            notificationManager = this.getSystemService(NotificationManager::class.java)
             val importance = NotificationManager.IMPORTANCE_DEFAULT
-            var channel = NotificationChannel(notID.toString(),"ilacTakipAsistanim",importance)
+            var channel = NotificationChannel(id,"ilacTakipAsistanim",importance)
             notificationManager.createNotificationChannel(channel)
         } else {
 

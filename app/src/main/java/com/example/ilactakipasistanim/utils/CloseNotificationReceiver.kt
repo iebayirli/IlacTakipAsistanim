@@ -13,7 +13,9 @@ class CloseNotificationReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context?, intent: Intent?) {
         ringtone.stop()
         var notificationManager = NotificationManagerCompat.from(context!!)
+
         notificationManager.cancel(notificationID.toInt())
+
 
     }
 }

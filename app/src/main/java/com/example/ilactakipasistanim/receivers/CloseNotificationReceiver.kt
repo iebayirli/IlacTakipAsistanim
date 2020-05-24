@@ -1,12 +1,11 @@
-package com.example.ilactakipasistanim.utils
+package com.example.ilactakipasistanim.receivers
 
-import android.app.NotificationManager
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import androidx.core.app.NotificationManagerCompat
-import com.example.ilactakipasistanim.utils.AlarmReceiver.Companion.notificationID
-import com.example.ilactakipasistanim.utils.AlarmReceiver.Companion.ringtone
+import com.example.ilactakipasistanim.receivers.AlarmReceiver.Companion.notificationID
+import com.example.ilactakipasistanim.receivers.AlarmReceiver.Companion.ringtone
 
 class CloseNotificationReceiver : BroadcastReceiver() {
 

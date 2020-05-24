@@ -10,7 +10,7 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:name=".IlacTakipAsistanimApplication">
@@ -38,9 +38,9 @@
             android:name=".ui.set_alarm.SetAlarmActivity" />
 
 
-        <receiver android:name=".utils.AlarmReceiver" android:enabled="true" android:exported="true"/>
+        <receiver android:name=".receivers.AlarmReceiver" android:enabled="true" android:exported="true"/>
 
-        <receiver android:name=".utils.CloseNotificationReceiver" android:enabled="true" android:exported="true"/>
+        <receiver android:name=".receivers.CloseNotificationReceiver" android:enabled="true" android:exported="true"/>
     </application>
 
 </manifest>

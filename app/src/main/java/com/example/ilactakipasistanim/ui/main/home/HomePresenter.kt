@@ -31,7 +31,12 @@ class HomePresenter(view : HomeContract.View) : BasePresenter<HomeContract.View>
     private fun calculatedTime(alarmList : ArrayList<String>) : String{
         var timeFormat = SimpleDateFormat("HH:mm")
         timeFormat.timeZone = TimeZone.getTimeZone("GMT")
-        var currentTime = System.currentTimeMillis()
+
+        var cal = Calendar.getInstance()
+
+        var currentTime = cal.get(Calendar.HOUR_OF_DAY).toString()+":" +cal.get(Calendar.MINUTE).toString()
+        var suankiZaman = timeFormat.parse(currentTime)
+
 
         var aalarm = Gson().fromJson(alarmList[0], AlarmsClass::class.java)
         var enKucuk = aalarm.alarmSaatleri[0]+";"+aalarm.medicine.ilacAdi
@@ -43,7 +48,7 @@ class HomePresenter(view : HomeContract.View) : BasePresenter<HomeContract.View>
                 var tmp = enKucuk.substring(0,enKucuk.indexOf(";"))
                 var tmp2 = timeFormat.parse(tmp)
 
-                var fark = saat.time - currentTime
+                var fark = saat.time - suankiZaman.time
                 if(fark < tmp2.time ){
                     var date3 = timeFormat.format(Date(fark))
                     enKucuk = date3+";"+medicine.medicine.ilacAdi

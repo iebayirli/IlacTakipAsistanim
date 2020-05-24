@@ -53,7 +53,7 @@ class HomeFragment : BaseFragment<HomePresenter>(), HomeContract.View {
         if(isTrue){
             alarmList.addAll(baseActivity?.sharedPrefHelper?.getAlarmList(SharedPrefKey.ALARMS_LIST)!!)
         }else{
-            home_text.text="Kurulu Alarmınız Bulunmamaktadır."
+            home_text.text="Yaklaşan Alarmınız Bulunmamaktadır."
             mainScreenCircle.visibility= View.GONE
             kalanVakitText.visibility=View.GONE
             tmpHome.visibility=View.GONE

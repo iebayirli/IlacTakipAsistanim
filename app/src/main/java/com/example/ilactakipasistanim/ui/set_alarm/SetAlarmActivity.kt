@@ -11,7 +11,7 @@ import com.example.ilactakipasistanim.common.MedicinesClass
 import com.example.ilactakipasistanim.common.SharedPrefKey
 import com.example.ilactakipasistanim.ui.base.BaseActivity
 import com.example.ilactakipasistanim.ui.main.MainActivity
-import com.example.ilactakipasistanim.utils.AlarmReceiver
+import com.example.ilactakipasistanim.receivers.AlarmReceiver
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_set_alarm.*
 import org.koin.android.ext.android.inject
@@ -144,6 +144,7 @@ class SetAlarmActivity : BaseActivity<SetAlarmPresenter>(), SetAlarmContract.Vie
             var alarmTime = calendar.timeInMillis
             //AlarmManager.INTERVAL_DAY
             alarmManager?.setExact(AlarmManager.RTC_WAKEUP, alarmTime,pendingIntent)
+            //alarmManager?.setInexactRepeating(AlarmManager.RTC_WAKEUP,alarmTime,AlarmManager.INTERVAL_DAY,pendingIntent)
 
         }
         presenter.alarmSetted()

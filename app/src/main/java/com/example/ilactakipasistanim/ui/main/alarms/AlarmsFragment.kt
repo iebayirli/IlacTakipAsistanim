@@ -15,7 +15,7 @@ import com.example.ilactakipasistanim.common.SharedPrefKey
 import com.example.ilactakipasistanim.ui.base.BaseFragment
 import com.example.ilactakipasistanim.ui.main.alarms.adapter.AlarmViewItemClickListener
 import com.example.ilactakipasistanim.ui.main.alarms.adapter.AlarmsAdapter
-import com.example.ilactakipasistanim.utils.AlarmReceiver
+import com.example.ilactakipasistanim.receivers.AlarmReceiver
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_alarms.*
 import org.koin.android.ext.android.inject
@@ -74,7 +74,8 @@ class AlarmsFragment : BaseFragment<AlarmsPresenter>(), AlarmsContract.View , Al
         var alarm = Gson().fromJson(alarmList[index],AlarmsClass::class.java)
 
         alarm.ids.forEach {id ->
-            var intent = Intent(context,AlarmReceiver::class.java)
+            var intent = Intent(context,
+                AlarmReceiver::class.java)
             var pendingIntent = PendingIntent.getBroadcast(context,id.toInt(),intent,0)
 
             alarmManager.cancel(pendingIntent)

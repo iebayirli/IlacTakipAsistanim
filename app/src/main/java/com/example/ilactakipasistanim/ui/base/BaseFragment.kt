@@ -63,4 +63,5 @@ abstract class BaseFragment<T: BasePresenter<*>>: Fragment(), BaseView {
     override fun dismissProgress() {
         baseActivity?.dismissProgress()
     }
+
 }

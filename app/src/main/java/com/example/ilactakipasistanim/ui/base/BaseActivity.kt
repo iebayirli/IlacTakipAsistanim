@@ -50,6 +50,7 @@ abstract class BaseActivity<T : BasePresenter<*>>: AppCompatActivity(), BaseView
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
+
     inline fun <reified E: BaseFragment<*>> navigateFragmentWithBackStack(layoutId: Int, vararg params: Pair<String, Any>, animation: Boolean?=false) {
         val fragment =  E::class.java.newInstance().apply {
             bundleOf(*params)

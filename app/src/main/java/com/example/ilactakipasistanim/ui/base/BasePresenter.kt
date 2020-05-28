@@ -10,7 +10,6 @@ abstract class BasePresenter<T: BaseView>(protected val view: T?) :KoinComponent
 
     protected var isViewAlive = AtomicBoolean()
 
-
     open fun initialize(extras: Bundle?) {}
 
     open fun start() {

@@ -20,7 +20,7 @@ class AlarmReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context?, intent: Intent?) {
 
-        setRingtone(context)
+        //setRingtone(context)
         var id = intent?.getStringExtra("ilac")
 
         var ilacAdi = id?.substring(0,id?.indexOf(":"))
@@ -46,7 +46,7 @@ class AlarmReceiver : BroadcastReceiver() {
 
         Toast.makeText(context,"İlac Adi" + ilacAdi, Toast.LENGTH_LONG).show()
 
-        ringtone.play()
+        //ringtone.play()
     }
     private fun setRingtone(context: Context?){
         var alarmMelodi = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM)
